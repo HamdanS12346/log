@@ -61,10 +61,10 @@
 
 ### Tests for User Story 1
 
-- [ ] T022 [P] [US1] Add unit tests for owner role detection in tests/unit/owner.test.ts
-- [ ] T023 [P] [US1] Add unit tests for month grid and visible range generation in tests/unit/month-grid.test.ts
-- [ ] T024 [P] [US1] Add component tests for owner calendar status rendering in tests/component/month-grid.test.tsx
-- [ ] T025 [P] [US1] Add end-to-end owner logging flow test in tests/e2e/permissions.spec.ts
+- [X] T022 [P] [US1] Add unit tests for owner role detection in tests/unit/owner.test.ts
+- [X] T023 [P] [US1] Add unit tests for month grid and visible range generation in tests/unit/month-grid.test.ts
+- [X] T024 [P] [US1] Add component tests for owner calendar status rendering in tests/component/month-grid.test.tsx
+- [X] T025 [P] [US1] Add end-to-end owner logging flow test in tests/e2e/permissions.spec.ts
 
 ### Implementation for User Story 1
 

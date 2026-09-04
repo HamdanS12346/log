@@ -6,6 +6,7 @@ import {
 } from "@firebase/rules-unit-testing";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { readFileSync } from "node:fs";
+import { afterAll, beforeAll, beforeEach, describe, it } from "vitest";
 
 let testEnv: RulesTestEnvironment;
 
