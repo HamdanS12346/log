@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "log",
-  description: "A simple habit calendar log."
+  description: "This is just a calender."
 };
 
 export default function RootLayout({
