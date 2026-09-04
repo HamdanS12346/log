@@ -1,0 +1,31 @@
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --accent: #c60000;
+  --muted: rgb(0 0 0 / 40%);
+  --border: rgb(0 0 0 / 12%);
+  --success: #15803d;
+  --failure: #c60000;
+  --surface: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+button,
+input {
+  font: inherit;
+}
