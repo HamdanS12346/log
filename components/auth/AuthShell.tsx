@@ -24,7 +24,7 @@ export function AuthShell({ mode, children, onModeChange }: AuthShellProps) {
             <h1>This is just a calender</h1>
             <p>nothing else</p>
           </section>
-          <p className="auth-footer">&copy; 2023 log. All Rights Reserved.</p>
+          <p className="auth-footer">&copy; 2023 log.</p>
         </section>
 
         <section className="auth-card" aria-label={isLogin ? "Login" : "Sign up"}>

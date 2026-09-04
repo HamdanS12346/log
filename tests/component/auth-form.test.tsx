@@ -79,7 +79,7 @@ describe("auth shell layout and accessibility", () => {
     expect(screen.getByRole("link", { name: "log home" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "This is just a calender" })).toBeInTheDocument();
     expect(screen.getByText("nothing else")).toBeInTheDocument();
-    expect(screen.getByText("© 2023 log. All Rights Reserved.")).toBeInTheDocument();
+    expect(screen.getByText("© 2023 log.")).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();
   });

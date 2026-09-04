@@ -40,7 +40,7 @@ export function LoginForm({
           autoComplete="email"
           inputMode="email"
           name="email"
-          placeholder="name@example.com"
+          placeholder="jamesdean@madorwhat.com"
           type="email"
           value={credentials.email}
           onChange={(event) => updateField("email", event.target.value)}
@@ -51,7 +51,7 @@ export function LoginForm({
         <input
           autoComplete="current-password"
           name="password"
-          placeholder="Your password"
+          placeholder="secretstuff"
           type="password"
           value={credentials.password}
           onChange={(event) => updateField("password", event.target.value)}
