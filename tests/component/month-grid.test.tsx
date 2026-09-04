@@ -1,7 +1,8 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { createElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { MonthGrid } from "@/components/calendar/MonthGrid";
+import { StatusChooser } from "@/components/calendar/StatusChooser";
 
 const september = new Date(2026, 8, 1);
 
@@ -44,6 +45,25 @@ describe("owner calendar status rendering", () => {
       expect(cell).toHaveAttribute("data-cell-size", "stable");
     }
   });
+
+  it("clears a logged date once on double click", () => {
+    const onClearDate = vi.fn();
+
+    render(createElement(MonthGrid, {
+      month: september,
+      canEdit: true,
+      statuses: {
+          "2026-09-04": "green"
+      },
+      onSelectDate: vi.fn(),
+      onClearDate
+    }));
+
+    fireEvent.doubleClick(screen.getByRole("button", { name: /september 4, 2026.*green/i }));
+
+    expect(onClearDate).toHaveBeenCalledTimes(1);
+    expect(onClearDate).toHaveBeenCalledWith("2026-09-04");
+  });
 });
 
 describe("viewer-only calendar rendering", () => {
@@ -65,5 +85,22 @@ describe("viewer-only calendar rendering", () => {
     expect(screen.queryByRole("button", { name: /september 4, 2026/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /september 5, 2026/i })).not.toBeInTheDocument();
     expect(onSelectDate).not.toHaveBeenCalled();
+  });
+});
+
+describe("owner status chooser", () => {
+  it("renders textless circular status buttons with accessible names", () => {
+    render(createElement(StatusChooser, {
+      selectedDate: "2026-09-04",
+      onChooseStatus: vi.fn()
+    }));
+
+    const unsuccessfulButton = screen.getByRole("button", { name: "Mark unsuccessful" });
+    const successfulButton = screen.getByRole("button", { name: "Mark successful" });
+
+    expect(unsuccessfulButton).toHaveClass("status-button", "status-red");
+    expect(successfulButton).toHaveClass("status-button", "status-green");
+    expect(unsuccessfulButton).toHaveTextContent("");
+    expect(successfulButton).toHaveTextContent("");
   });
 });

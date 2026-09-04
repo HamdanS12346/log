@@ -24,8 +24,9 @@ export function CalendarShell({
     moveMonth,
     pending,
     selectedDate,
+    selectDate,
+    clearDate,
     sessionReady,
-    setSelectedDate,
     statuses
   } = useHabitCalendar({ initialStatuses, mode });
   const title = monthLabel(months[0]);
@@ -53,7 +54,8 @@ export function CalendarShell({
               canEdit={canEdit}
               selectedDate={selectedDate}
               statuses={statuses}
-              onSelectDate={setSelectedDate}
+              onSelectDate={selectDate}
+              onClearDate={clearDate}
             />
           ))}
         </div>

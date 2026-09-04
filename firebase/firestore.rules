@@ -40,7 +40,7 @@ service cloud.firestore {
     match /habitStatuses/{dateId} {
       allow read: if signedIn();
       allow create, update: if isOwner() && validStatus(dateId);
-      allow delete: if false;
+      allow delete: if isOwner();
     }
   }
 }

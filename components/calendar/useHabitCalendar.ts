@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { addMonths } from "@/lib/calendar/date-format";
 import {
   getVisibleRange,
   type PresentationMode
 } from "@/lib/calendar/visible-range";
-import { saveHabitStatus } from "@/app/log/actions";
+import { clearHabitStatus, saveHabitStatus } from "@/app/log/actions";
 import { watchSession, type AppSession } from "@/lib/auth/session";
 import {
   loadHabitStatuses,
-  persistHabitStatus
+  persistHabitStatus,
+  removeHabitStatus
 } from "@/lib/firebase/habit-statuses";
 import type { HabitStatus } from "./StatusChooser";
 
@@ -32,6 +33,7 @@ export function useHabitCalendar({
   const [session, setSession] = useState<AppSession | null>(null);
   const [sessionReady, setSessionReady] = useState(false);
   const [pending, startTransition] = useTransition();
+  const clearingDateRef = useRef<string | null>(null);
 
   const visibleRange = useMemo(
     () => getVisibleRange(anchorMonth, mode),
@@ -78,6 +80,58 @@ export function useHabitCalendar({
     setAnchorMonth((current) => addMonths(current, amount));
     setSelectedDate(null);
     setMessage(undefined);
+  }
+
+  function selectDate(date: string) {
+    setSelectedDate(date);
+    setMessage(undefined);
+  }
+
+  function clearDate(date: string) {
+    if (!session) {
+      setMessage("Log in before changing dates.");
+      return;
+    }
+
+    if (!canEdit) {
+      setMessage("Only the owner can change dates.");
+      return;
+    }
+
+    if (!statuses[date] || clearingDateRef.current === date) {
+      return;
+    }
+
+    clearingDateRef.current = date;
+
+    startTransition(async () => {
+      const result = await clearHabitStatus(date, {
+        email: session.email,
+        userId: session.userId
+      });
+
+      if (!result.ok) {
+        clearingDateRef.current = null;
+        setMessage(result.message);
+        return;
+      }
+
+      try {
+        await removeHabitStatus(result.date);
+      } catch {
+        clearingDateRef.current = null;
+        setMessage("Could not remove that date.");
+        return;
+      }
+
+      setStatuses((current) => {
+        const next = { ...current };
+        delete next[result.date];
+        return next;
+      });
+      clearingDateRef.current = null;
+      setMessage("Removed");
+    });
   }
 
   function chooseStatus(status: HabitStatus) {
@@ -130,8 +184,9 @@ export function useHabitCalendar({
     moveMonth,
     pending,
     selectedDate,
+    selectDate,
+    clearDate,
     sessionReady,
-    setSelectedDate,
     statuses
   };
 }

@@ -7,6 +7,10 @@ export type SaveHabitStatusResult =
   | { ok: true; date: string; status: HabitStatus }
   | { ok: false; message: string };
 
+export type RemoveHabitStatusResult =
+  | { ok: true; date: string }
+  | { ok: false; message: string };
+
 type SaveActor = {
   email: string | null;
   userId: string;
@@ -30,4 +34,19 @@ export async function saveHabitStatus(
   }
 
   return { ok: true, date, status };
+}
+
+export async function clearHabitStatus(
+  date: string,
+  actor?: SaveActor
+): Promise<RemoveHabitStatusResult> {
+  if (!actor?.userId || !isOwnerEmail(actor.email)) {
+    return { ok: false, message: "Only the owner can change dates." };
+  }
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return { ok: false, message: "Choose a valid date." };
+  }
+
+  return { ok: true, date };
 }

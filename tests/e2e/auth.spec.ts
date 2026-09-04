@@ -55,8 +55,8 @@ test.describe("signup and login", () => {
 
     await expect(page).toHaveURL(/\/log$/);
     await expect(page.getByRole("main", { name: /habit calendar/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Red" })).toHaveCount(0);
-    await expect(page.getByRole("button", { name: "Green" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Mark unsuccessful" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Mark successful" })).toHaveCount(0);
   });
 
   test("registered viewer can log in and reach the calendar", async ({ page }) => {

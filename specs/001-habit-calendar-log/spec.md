@@ -133,4 +133,4 @@ As any user, I want the login and signup experience to match the requested simpl
 - Red means an unsuccessful habit result and green means a successful habit result.
 - Calendar date statuses are global and visible to every logged-in user, not private per viewer.
 - The requested spelling "calender" is intentional for visible title text and should be preserved.
-- The copyright footer text remains "© 2023 log. All Rights Reserved." as provided.
+- The footer text is "© 2023 log." without "All Rights Reserved."

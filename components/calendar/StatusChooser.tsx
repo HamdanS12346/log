@@ -20,19 +20,17 @@ export function StatusChooser({
         <button
           type="button"
           className="status-button status-red"
+          aria-label="Mark unsuccessful"
           disabled={!selectedDate || pending}
           onClick={() => onChooseStatus("red")}
-        >
-          Red
-        </button>
+        />
         <button
           type="button"
           className="status-button status-green"
+          aria-label="Mark successful"
           disabled={!selectedDate || pending}
           onClick={() => onChooseStatus("green")}
-        >
-          Green
-        </button>
+        />
       </div>
       {message ? (
         <p className="status-message" role="status" aria-live="polite">

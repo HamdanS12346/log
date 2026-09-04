@@ -13,7 +13,7 @@ test.describe("owner habit logging", () => {
 
     const targetDate = page.getByRole("button", { name: /today|select date/i }).first();
     await targetDate.click();
-    await page.getByRole("button", { name: "Green" }).click();
+    await page.getByRole("button", { name: "Mark successful" }).click();
 
     await expect(page.getByText(/saved/i)).toBeVisible();
     await page.reload();
@@ -29,11 +29,11 @@ test.describe("owner habit logging", () => {
 
     await expect(page).toHaveURL(/\/log$/);
     await page.getByRole("button", { name: /select date/i }).first().click();
-    await page.getByRole("button", { name: "Red" }).click();
+    await page.getByRole("button", { name: "Mark unsuccessful" }).click();
     await expect(page.getByText(/saved/i)).toBeVisible();
 
     await page.getByRole("button", { name: /red/i }).first().click();
-    await page.getByRole("button", { name: "Green" }).click();
+    await page.getByRole("button", { name: "Mark successful" }).click();
     await expect(page.getByRole("button", { name: /green/i }).first()).toBeVisible();
   });
 });
@@ -48,8 +48,8 @@ test.describe("viewer habit calendar permissions", () => {
 
     await expect(page).toHaveURL(/\/log$/);
     await expect(page.getByRole("main", { name: /habit calendar/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Red" })).toHaveCount(0);
-    await expect(page.getByRole("button", { name: "Green" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Mark unsuccessful" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Mark successful" })).toHaveCount(0);
     await expect(page.getByRole("button", { name: /select date/i })).toHaveCount(0);
   });
 });

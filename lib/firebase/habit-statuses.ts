@@ -1,5 +1,6 @@
 import {
   collection,
+  deleteDoc,
   doc,
   getDocs,
   query,
@@ -47,4 +48,8 @@ export async function persistHabitStatus(
     updatedBy: userId,
     updatedAt: serverTimestamp()
   });
+}
+
+export async function removeHabitStatus(date: string) {
+  await deleteDoc(doc(getFirebaseDb(), HABIT_STATUSES_COLLECTION, date));
 }

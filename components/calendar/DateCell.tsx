@@ -10,6 +10,7 @@ type DateCellProps = {
   isToday?: boolean;
   isSelected?: boolean;
   onSelectDate?: (dateKey: string) => void;
+  onClearDate?: (dateKey: string) => void;
 };
 
 function formatDateLabel(date: Date) {
@@ -29,7 +30,8 @@ export function DateCell({
   canEdit,
   isToday = false,
   isSelected = false,
-  onSelectDate
+  onSelectDate,
+  onClearDate
 }: DateCellProps) {
   const labelParts = [
     isToday ? "Today" : "Select date",
@@ -61,6 +63,11 @@ export function DateCell({
           aria-label={labelParts.join(", ")}
           data-date={dateKey}
           onClick={() => onSelectDate?.(dateKey)}
+          onDoubleClick={() => {
+            if (status) {
+              onClearDate?.(dateKey);
+            }
+          }}
         >
           {content}
         </button>

@@ -6,6 +6,7 @@ import { LoginForm } from "@/components/auth/LoginForm";
 import { SignUpForm } from "@/components/auth/SignUpForm";
 
 describe("login form state", () => {
+  
   it("submits labeled email and password fields", () => {
     const onSubmit = vi.fn();
 

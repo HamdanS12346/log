@@ -4,7 +4,7 @@ import {
   initializeTestEnvironment,
   type RulesTestEnvironment
 } from "@firebase/rules-unit-testing";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, beforeEach, describe, it } from "vitest";
 
@@ -96,6 +96,21 @@ describe("Firestore security rules", () => {
     );
   });
 
+  it("blocks viewer deletes to existing habit statuses", async () => {
+    await requireTestEnv().withSecurityRulesDisabled(async (context) => {
+      await setDoc(doc(context.firestore(), "habitStatuses/2026-09-04"), {
+        date: "2026-09-04",
+        status: "green",
+        updatedBy: "owner",
+        updatedAt: new Date()
+      });
+    });
+
+    await assertFails(
+      deleteDoc(doc(dbFor("viewer", "viewer@example.com"), "habitStatuses/2026-09-04"))
+    );
+  });
+
   it("allows owner writes with valid status values", async () => {
     await assertSucceeds(
       setDoc(doc(dbFor("owner", "hamdanshaikh11133@gmail.com"), "habitStatuses/2026-09-04"), {
@@ -113,6 +128,10 @@ describe("Firestore security rules", () => {
         updatedBy: "owner",
         updatedAt: new Date()
       })
+    );
+
+    await assertSucceeds(
+      deleteDoc(doc(dbFor("owner", "hamdanshaikh11133@gmail.com"), "habitStatuses/2026-09-04"))
     );
   });
 

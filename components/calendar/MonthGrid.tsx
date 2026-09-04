@@ -9,6 +9,7 @@ type MonthGridProps = {
   selectedDate?: string | null;
   statuses: Record<string, HabitStatus>;
   onSelectDate: (dateKey: string) => void;
+  onClearDate?: (dateKey: string) => void;
 };
 
 export function MonthGrid({
@@ -16,7 +17,8 @@ export function MonthGrid({
   canEdit,
   selectedDate,
   statuses,
-  onSelectDate
+  onSelectDate,
+  onClearDate
 }: MonthGridProps) {
   const label = monthLabel(month);
   const todayKey = toDateKey(new Date());
@@ -42,6 +44,7 @@ export function MonthGrid({
             isToday={cell.dateKey === todayKey}
             isSelected={cell.dateKey === selectedDate}
             onSelectDate={onSelectDate}
+            onClearDate={onClearDate}
           />
         ))}
       </div>
