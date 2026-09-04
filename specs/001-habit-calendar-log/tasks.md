@@ -163,9 +163,9 @@
 
 ### Tests for Calendar Refinement
 
-- [ ] T060 [P] Add desktop dual-month calendar layout test in tests/e2e/calendar-layout.spec.ts
-- [ ] T061 [P] Add mobile single-month calendar layout test in tests/e2e/calendar-layout.spec.ts
-- [ ] T062 [P] Add reduced-motion and keyboard-focus calendar checks in tests/e2e/calendar-layout.spec.ts
+- [X] T060 [P] Add desktop dual-month calendar layout test in tests/e2e/calendar-layout.spec.ts
+- [X] T061 [P] Add mobile single-month calendar layout test in tests/e2e/calendar-layout.spec.ts
+- [X] T062 [P] Add reduced-motion and keyboard-focus calendar checks in tests/e2e/calendar-layout.spec.ts
 
 ### Implementation for Calendar Refinement
 
