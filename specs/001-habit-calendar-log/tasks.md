@@ -68,16 +68,16 @@
 
 ### Implementation for User Story 1
 
-- [ ] T026 [P] [US1] Implement calendar date cell component with stable dimensions in components/calendar/DateCell.tsx
-- [ ] T027 [P] [US1] Implement calendar header with previous and next controls in components/calendar/CalendarHeader.tsx
-- [ ] T028 [P] [US1] Implement month grid component with weekday labels and muted outside-month dates in components/calendar/MonthGrid.tsx
-- [ ] T029 [P] [US1] Implement red/green status chooser for owner edits in components/calendar/StatusChooser.tsx
-- [ ] T030 [US1] Implement calendar shell state for visible months, selected date, status map, and owner edit mode in components/calendar/CalendarShell.tsx
-- [ ] T031 [US1] Implement protected log page data loading for profile and visible habit statuses in app/log/page.tsx
-- [ ] T032 [US1] Implement owner-only habit status save boundary in app/log/actions.ts
-- [ ] T033 [US1] Wire CalendarShell to save and refresh red/green status changes in components/calendar/CalendarShell.tsx
-- [ ] T034 [US1] Add user-facing save failure and unauthorized edit messages in components/calendar/StatusChooser.tsx
-- [ ] T035 [US1] Verify quickstart owner editing scenario against specs/001-habit-calendar-log/quickstart.md
+- [X] T026 [P] [US1] Implement calendar date cell component with stable dimensions in components/calendar/DateCell.tsx
+- [X] T027 [P] [US1] Implement calendar header with previous and next controls in components/calendar/CalendarHeader.tsx
+- [X] T028 [P] [US1] Implement month grid component with weekday labels and muted outside-month dates in components/calendar/MonthGrid.tsx
+- [X] T029 [P] [US1] Implement red/green status chooser for owner edits in components/calendar/StatusChooser.tsx
+- [X] T030 [US1] Implement calendar shell state for visible months, selected date, status map, and owner edit mode in components/calendar/CalendarShell.tsx
+- [X] T031 [US1] Implement protected log page data loading for profile and visible habit statuses in app/log/page.tsx
+- [X] T032 [US1] Implement owner-only habit status save boundary in app/log/actions.ts
+- [X] T033 [US1] Wire CalendarShell to save and refresh red/green status changes in components/calendar/CalendarShell.tsx
+- [X] T034 [US1] Add user-facing save failure and unauthorized edit messages in components/calendar/StatusChooser.tsx
+- [X] T035 [US1] Verify quickstart owner editing scenario against specs/001-habit-calendar-log/quickstart.md
 
 **Checkpoint**: User Story 1 is fully functional and independently testable as the MVP.
 
