@@ -45,3 +45,25 @@ describe("owner calendar status rendering", () => {
     }
   });
 });
+
+describe("viewer-only calendar rendering", () => {
+  it("shows logged statuses without exposing editable date buttons", () => {
+    const onSelectDate = vi.fn();
+
+    render(createElement(MonthGrid, {
+      month: september,
+      canEdit: false,
+      statuses: {
+          "2026-09-04": "green",
+          "2026-09-05": "red"
+      },
+      onSelectDate
+    }));
+
+    expect(screen.getByLabelText(/september 4, 2026.*green/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/september 5, 2026.*red/i)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /september 4, 2026/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /september 5, 2026/i })).not.toBeInTheDocument();
+    expect(onSelectDate).not.toHaveBeenCalled();
+  });
+});

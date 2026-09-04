@@ -37,3 +37,19 @@ test.describe("owner habit logging", () => {
     await expect(page.getByRole("button", { name: /green/i }).first()).toBeVisible();
   });
 });
+
+test.describe("viewer habit calendar permissions", () => {
+  test("viewer can see logged statuses without edit controls", async ({ page }) => {
+    await page.goto("/login");
+
+    await page.getByLabel("Email").fill("viewer@example.com");
+    await page.getByLabel("Password").fill("viewer-password");
+    await page.getByRole("button", { name: "Login" }).click();
+
+    await expect(page).toHaveURL(/\/log$/);
+    await expect(page.getByRole("main", { name: /habit calendar/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Red" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Green" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: /select date/i })).toHaveCount(0);
+  });
+});

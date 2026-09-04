@@ -91,9 +91,9 @@
 
 ### Tests for User Story 2
 
-- [ ] T036 [P] [US2] Add component tests for viewer-only calendar rendering in tests/component/month-grid.test.tsx
-- [ ] T037 [P] [US2] Add end-to-end viewer read-only calendar test in tests/e2e/permissions.spec.ts
-- [ ] T038 [P] [US2] Add Firebase rules assertions for viewer write rejection in firebase/tests/firestore.rules.test.ts
+- [X] T036 [P] [US2] Add component tests for viewer-only calendar rendering in tests/component/month-grid.test.tsx
+- [X] T037 [P] [US2] Add end-to-end viewer read-only calendar test in tests/e2e/permissions.spec.ts
+- [X] T038 [P] [US2] Add Firebase rules assertions for viewer write rejection in firebase/tests/firestore.rules.test.ts
 
 ### Implementation for User Story 2
 

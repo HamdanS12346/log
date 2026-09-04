@@ -8,7 +8,7 @@ import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, beforeEach, describe, it } from "vitest";
 
-let testEnv: RulesTestEnvironment;
+let testEnv: RulesTestEnvironment | undefined;
 
 beforeAll(async () => {
   testEnv = await initializeTestEnvironment({
@@ -20,21 +20,29 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await testEnv.cleanup();
+  await testEnv?.cleanup();
 });
 
 beforeEach(async () => {
-  await testEnv.clearFirestore();
+  await requireTestEnv().clearFirestore();
 });
 
+function requireTestEnv() {
+  if (!testEnv) {
+    throw new Error("Firestore rules test environment was not initialized.");
+  }
+
+  return testEnv;
+}
+
 function dbFor(uid: string, email: string) {
-  return testEnv
+  return requireTestEnv()
     .authenticatedContext(uid, { email })
     .firestore();
 }
 
 function anonymousDb() {
-  return testEnv.unauthenticatedContext().firestore();
+  return requireTestEnv().unauthenticatedContext().firestore();
 }
 
 describe("Firestore security rules", () => {
@@ -43,7 +51,7 @@ describe("Firestore security rules", () => {
   });
 
   it("allows authenticated viewers to read habit statuses", async () => {
-    await testEnv.withSecurityRulesDisabled(async (context) => {
+    await requireTestEnv().withSecurityRulesDisabled(async (context) => {
       await setDoc(doc(context.firestore(), "habitStatuses/2026-09-04"), {
         date: "2026-09-04",
         status: "green",
@@ -60,6 +68,26 @@ describe("Firestore security rules", () => {
   it("blocks viewer writes", async () => {
     await assertFails(
       setDoc(doc(dbFor("viewer", "viewer@example.com"), "habitStatuses/2026-09-04"), {
+        date: "2026-09-04",
+        status: "green",
+        updatedBy: "viewer",
+        updatedAt: new Date()
+      })
+    );
+  });
+
+  it("blocks viewer updates to existing habit statuses", async () => {
+    await requireTestEnv().withSecurityRulesDisabled(async (context) => {
+      await setDoc(doc(context.firestore(), "habitStatuses/2026-09-04"), {
+        date: "2026-09-04",
+        status: "red",
+        updatedBy: "owner",
+        updatedAt: new Date()
+      });
+    });
+
+    await assertFails(
+      updateDoc(doc(dbFor("viewer", "viewer@example.com"), "habitStatuses/2026-09-04"), {
         date: "2026-09-04",
         status: "green",
         updatedBy: "viewer",
