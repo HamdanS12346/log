@@ -6,11 +6,18 @@ import type { HabitStatus } from "./StatusChooser";
 type MonthGridProps = {
   month: Date;
   canEdit: boolean;
+  selectedDate?: string | null;
   statuses: Record<string, HabitStatus>;
   onSelectDate: (dateKey: string) => void;
 };
 
-export function MonthGrid({ month, canEdit, statuses, onSelectDate }: MonthGridProps) {
+export function MonthGrid({
+  month,
+  canEdit,
+  selectedDate,
+  statuses,
+  onSelectDate
+}: MonthGridProps) {
   const label = monthLabel(month);
   const todayKey = toDateKey(new Date());
   const cells = getMonthGrid(month);
@@ -33,6 +40,7 @@ export function MonthGrid({ month, canEdit, statuses, onSelectDate }: MonthGridP
             status={statuses[cell.dateKey]}
             canEdit={canEdit}
             isToday={cell.dateKey === todayKey}
+            isSelected={cell.dateKey === selectedDate}
             onSelectDate={onSelectDate}
           />
         ))}

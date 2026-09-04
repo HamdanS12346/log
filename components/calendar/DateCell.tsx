@@ -8,6 +8,7 @@ type DateCellProps = {
   status?: HabitStatus;
   canEdit: boolean;
   isToday?: boolean;
+  isSelected?: boolean;
   onSelectDate?: (dateKey: string) => void;
 };
 
@@ -27,6 +28,7 @@ export function DateCell({
   status,
   canEdit,
   isToday = false,
+  isSelected = false,
   onSelectDate
 }: DateCellProps) {
   const labelParts = [
@@ -38,7 +40,8 @@ export function DateCell({
     "calendar-date",
     !isActiveMonth ? "is-muted" : "",
     status ? `is-${status}` : "",
-    isToday ? "is-today" : ""
+    isToday ? "is-today" : "",
+    isSelected ? "is-selected" : ""
   ]
     .filter(Boolean)
     .join(" ");

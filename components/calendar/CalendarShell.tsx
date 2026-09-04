@@ -51,6 +51,7 @@ export function CalendarShell({
               key={`${month.getFullYear()}-${month.getMonth()}`}
               month={month}
               canEdit={canEdit}
+              selectedDate={selectedDate}
               statuses={statuses}
               onSelectDate={setSelectedDate}
             />

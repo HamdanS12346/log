@@ -169,11 +169,11 @@
 
 ### Implementation for Calendar Refinement
 
-- [ ] T063 Refine desktop current-plus-following-month layout in components/calendar/CalendarShell.tsx
-- [ ] T064 Refine mobile current-month-only layout in components/calendar/CalendarShell.tsx
-- [ ] T065 Refine chevron alignment and month heading behavior in components/calendar/CalendarHeader.tsx
-- [ ] T066 Refine spacing, muted date styling, logged date styling, and microinteractions in components/calendar/DateCell.tsx and components/calendar/MonthGrid.tsx
-- [ ] T067 Verify calendar refinement quickstart scenarios against specs/002-calendar-page-layout/quickstart.md
+- [X] T063 Refine desktop current-plus-following-month layout in components/calendar/CalendarShell.tsx
+- [X] T064 Refine mobile current-month-only layout in components/calendar/CalendarShell.tsx
+- [X] T065 Refine chevron alignment and month heading behavior in components/calendar/CalendarHeader.tsx
+- [X] T066 Refine spacing, muted date styling, logged date styling, and microinteractions in components/calendar/DateCell.tsx and components/calendar/MonthGrid.tsx
+- [X] T067 Verify calendar refinement quickstart scenarios against specs/002-calendar-page-layout/quickstart.md
 
 **Checkpoint**: Calendar UI refinement is complete and coordinated with the main app.
 
