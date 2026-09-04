@@ -5,12 +5,6 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { SignUpForm } from "@/components/auth/SignUpForm";
 
-type AuthFormProps = {
-  pending?: boolean;
-  errorMessage?: string;
-  onSubmit: (credentials: { email: string; password: string }) => void;
-};
-
 describe("login form state", () => {
   it("submits labeled email and password fields", () => {
     const onSubmit = vi.fn();

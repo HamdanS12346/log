@@ -183,13 +183,13 @@
 
 **Purpose**: Final verification, performance, accessibility, and documentation cleanup across all stories.
 
-- [ ] T068 [P] Add README setup notes for Next.js and Firebase environment configuration in README.md
-- [ ] T069 Run type checking and linting for the full project using package.json scripts
-- [ ] T070 Run component and unit tests for tests/component and tests/unit
+- [X] T068 [P] Add README setup notes for Next.js and Firebase environment configuration in README.md
+- [X] T069 Run type checking and linting for the full project using package.json scripts
+- [X] T070 Run component and unit tests for tests/component and tests/unit
 - [ ] T071 Run end-to-end tests for tests/e2e
 - [ ] T072 Run Firebase Emulator security rules tests for firebase/tests/firestore.rules.test.ts
-- [ ] T073 Validate no UI file over 150 lines needs further decomposition in components/auth and components/calendar
-- [ ] T074 Validate all frontend code uses semantic tokens instead of scattered hardcoded colors in app/globals.css, components/auth, and components/calendar
+- [X] T073 Validate no UI file over 150 lines needs further decomposition in components/auth and components/calendar
+- [X] T074 Validate all frontend code uses semantic tokens instead of scattered hardcoded colors in app/globals.css, components/auth, and components/calendar
 - [ ] T075 Validate final quickstart scenarios in specs/001-habit-calendar-log/quickstart.md
 
 ---
