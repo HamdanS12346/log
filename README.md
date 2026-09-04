@@ -1,6 +1,6 @@
 # log
 
-A simple Next.js habit calendar that uses Firebase Authentication and Cloud Firestore.
+Just a log
 
 ## Local setup
 
