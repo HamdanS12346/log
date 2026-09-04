@@ -97,10 +97,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T039 [US2] Hide status chooser and edit affordances for viewer profiles in components/calendar/CalendarShell.tsx
-- [ ] T040 [US2] Ensure viewer role data loading still fetches saved habit statuses in app/log/page.tsx
-- [ ] T041 [US2] Add direct unauthorized write rejection handling in app/log/actions.ts
-- [ ] T042 [US2] Verify quickstart viewer read-only scenario against specs/001-habit-calendar-log/quickstart.md
+- [X] T039 [US2] Hide status chooser and edit affordances for viewer profiles in components/calendar/CalendarShell.tsx
+- [X] T040 [US2] Ensure viewer role data loading still fetches saved habit statuses in app/log/page.tsx
+- [X] T041 [US2] Add direct unauthorized write rejection handling in app/log/actions.ts
+- [X] T042 [US2] Verify quickstart viewer read-only scenario against specs/001-habit-calendar-log/quickstart.md
 
 **Checkpoint**: User Stories 1 and 2 both work independently.
 
