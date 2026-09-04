@@ -119,15 +119,15 @@
 
 ### Implementation for User Story 3
 
-- [ ] T045 [P] [US3] Implement login/signup visual shell with requested branding in components/auth/AuthShell.tsx
-- [ ] T046 [P] [US3] Implement accessible login form in components/auth/LoginForm.tsx
-- [ ] T047 [P] [US3] Implement accessible signup form in components/auth/SignUpForm.tsx
-- [ ] T048 [US3] Implement login page composition and mode switching in app/login/page.tsx
-- [ ] T049 [US3] Implement auth callback route for post-auth redirects in app/auth/callback/route.ts
-- [ ] T050 [US3] Implement sign-out route that clears the active session in app/auth/sign-out/route.ts
-- [ ] T051 [US3] Ensure signup creates or confirms profile role in app/login/page.tsx
-- [ ] T052 [US3] Add clear login, signup, duplicate email, and invalid credential errors in components/auth/LoginForm.tsx and components/auth/SignUpForm.tsx
-- [ ] T053 [US3] Verify quickstart signup and login scenarios against specs/001-habit-calendar-log/quickstart.md
+- [X] T045 [P] [US3] Implement login/signup visual shell with requested branding in components/auth/AuthShell.tsx
+- [X] T046 [P] [US3] Implement accessible login form in components/auth/LoginForm.tsx
+- [X] T047 [P] [US3] Implement accessible signup form in components/auth/SignUpForm.tsx
+- [X] T048 [US3] Implement login page composition and mode switching in app/login/page.tsx
+- [X] T049 [US3] Implement auth callback route for post-auth redirects in app/auth/callback/route.ts
+- [X] T050 [US3] Implement sign-out route that clears the active session in app/auth/sign-out/route.ts
+- [X] T051 [US3] Ensure signup creates or confirms profile role in app/login/page.tsx
+- [X] T052 [US3] Add clear login, signup, duplicate email, and invalid credential errors in components/auth/LoginForm.tsx and components/auth/SignUpForm.tsx
+- [X] T053 [US3] Verify quickstart signup and login scenarios against specs/001-habit-calendar-log/quickstart.md
 
 **Checkpoint**: User Story 3 works independently with protected calendar access.
 
