@@ -7,29 +7,29 @@ Rationale: The app has route-level screens for login and the log page, needs ser
 Alternatives considered:
 
 - Static HTML only: rejected because authentication and persisted shared data require app logic.
-- Separate frontend and backend apps: rejected because the required server boundary is small and Supabase covers auth and persistence.
+- Separate frontend and backend apps: rejected because the required server boundary is small and Firebase covers auth and persistence.
 
-## Decision: Use Supabase Auth For Users
+## Decision: Use Firebase Authentication For Users
 
-Rationale: The feature requires email/password signup and login with stored users. Supabase Auth avoids custom password storage while coordinating with database security policies.
+Rationale: The feature requires email/password signup and login with stored users. Firebase Authentication avoids custom password storage while coordinating with Firestore Security Rules.
 
 Alternatives considered:
 
 - Custom password table: rejected because it creates avoidable security risk.
 - No accounts: rejected because viewer access and owner-only editing require authentication.
 
-## Decision: Use Supabase Postgres For Habit Logs
+## Decision: Use Cloud Firestore For Habit Logs
 
-Rationale: Habit statuses need to persist, be visible to all authenticated users, and allow only one status per calendar date. A relational table with a unique date key fits the product model.
+Rationale: Habit statuses need to persist, be visible to all authenticated users, and allow only one status per calendar date. A Firestore document keyed by canonical date fits the product model and keeps reads aligned with the visible month range.
 
 Alternatives considered:
 
 - Browser storage: rejected because viewers on other devices must see the same calendar.
 - File storage: rejected because it complicates concurrent web reads and writes.
 
-## Decision: Enforce Owner-Only Writes With RLS And App Role Checks
+## Decision: Enforce Owner-Only Writes With Firestore Security Rules And App Role Checks
 
-Rationale: The UI hides editing from viewers, but database rules must also reject unauthorized writes. Profiles store the application role and policies allow authenticated reads while limiting inserts and updates to the owner.
+Rationale: The UI hides editing from viewers, but Firestore Security Rules must also reject unauthorized writes. Profiles store the application role and rules allow authenticated reads while limiting creates and updates to the owner.
 
 Alternatives considered:
 
@@ -38,7 +38,7 @@ Alternatives considered:
 
 ## Decision: Owner Role Comes From The Specified Owner Email
 
-Rationale: Supabase Auth owns password verification. The application assigns the owner role to the profile whose authenticated email is `hamdanshaikh11133@gmail.com`; the supplied password is used for the owner account login, not for application-side plaintext checks.
+Rationale: Firebase Authentication owns password verification. The application assigns the owner role to the profile whose authenticated email is `hamdanshaikh11133@gmail.com`; the supplied password is used for the owner account login, not for application-side plaintext checks.
 
 Alternatives considered:
 

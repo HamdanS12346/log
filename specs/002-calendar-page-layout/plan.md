@@ -6,15 +6,15 @@
 
 ## Summary
 
-Implement this feature as a calendar UI refinement within the parent `001-habit-calendar-log` Next.js and Supabase app. This plan does not create a separate app. It supplies detailed calendar rendering, responsive behavior, accessibility, and interaction requirements that must be satisfied when implementing the `/log` screen from `001`.
+Implement this feature as a calendar UI refinement within the parent `001-habit-calendar-log` Next.js and Firebase app. This plan does not create a separate app. It supplies detailed calendar rendering, responsive behavior, accessibility, and interaction requirements that must be satisfied when implementing the `/log` screen from `001`.
 
 ## Technical Context
 
 **Language/Version**: TypeScript with current Next.js App Router conventions
 
-**Primary Dependencies**: Same as `001-habit-calendar-log`: Next.js, React, Supabase client, token-driven styling, DM Sans
+**Primary Dependencies**: Same as `001-habit-calendar-log`: Next.js, React, Firebase modular Web SDK, token-driven styling, DM Sans
 
-**Storage**: Same Supabase habit status table from `001`; this feature reads visible-month statuses and writes single-day red/green statuses through the parent app permission model
+**Storage**: Same Firestore habit status collection from `001`; this feature reads visible-month statuses and writes single-day red/green statuses through the parent app permission model
 
 **Testing**: Component tests for month grid/date cell rendering, end-to-end layout checks for desktop/mobile, permission-aware owner/viewer calendar tests, reduced-motion and keyboard-focus checks
 

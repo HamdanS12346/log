@@ -2,7 +2,7 @@
 
 ## User Account
 
-Represents a Supabase-authenticated person.
+Represents a Firebase-authenticated person.
 
 Fields:
 

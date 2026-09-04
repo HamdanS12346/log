@@ -2,7 +2,7 @@
 
 ## Decision: Implement As A Refinement Of The Parent App
 
-Rationale: The calendar depends on authentication, owner permissions, and persisted statuses defined by `001-habit-calendar-log`. Keeping the implementation inside the same Next.js app prevents duplicated routing, state, and data access.
+Rationale: The calendar depends on Firebase authentication, owner permissions, and persisted statuses defined by `001-habit-calendar-log`. Keeping the implementation inside the same Next.js app prevents duplicated routing, state, and data access.
 
 Alternatives considered:
 

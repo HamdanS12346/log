@@ -3,8 +3,8 @@
 ## Prerequisites
 
 - Node.js available for a Next.js project.
-- Supabase project available.
-- Supabase project URL and publishable key configured locally.
+- Firebase project available with Authentication and Firestore enabled.
+- Firebase web app configuration values configured locally.
 - Owner credentials available:
   - Email: `hamdanshaikh11133@gmail.com`
   - Password: `mybumispurple`
@@ -12,9 +12,9 @@
 ## Setup
 
 1. Create the Next.js app structure described in `plan.md`.
-2. Configure Supabase environment variables.
-3. Apply schema and policies from `contracts/supabase-schema.md`.
-4. Run Supabase policy tests.
+2. Configure Firebase environment variables.
+3. Apply Firestore rules and indexes from `contracts/firebase-schema.md`.
+4. Run Firebase Emulator security rules tests.
 5. Start the local web app.
 
 ## Validation Scenarios
@@ -79,6 +79,6 @@ Expected outcome:
 - Main spec: `spec.md`
 - Calendar refinement: `../002-calendar-page-layout/spec.md`
 - Data model: `data-model.md`
-- Supabase contract: `contracts/supabase-schema.md`
+- Firebase contract: `contracts/firebase-schema.md`
 - Route contract: `contracts/routes.md`
 - UI contract: `contracts/ui.md`

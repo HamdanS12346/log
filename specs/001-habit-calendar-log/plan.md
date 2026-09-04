@@ -6,17 +6,17 @@
 
 ## Summary
 
-Build a two-screen web habit logging app using Next.js for the frontend/application routes and Supabase for authentication plus persisted habit date statuses. `001-habit-calendar-log` is the parent implementation plan covering login, signup, owner-only red/green logging, viewer-only calendar access, and persistence. `002-calendar-page-layout` is a required refinement for the log page calendar: current-month start, previous/next navigation, desktop dual-month layout, mobile single-month layout, and responsive calendar-only presentation.
+Build a two-screen web habit logging app using Next.js for the frontend/application routes and Firebase for authentication plus persisted habit date statuses. `001-habit-calendar-log` is the parent implementation plan covering login, signup, owner-only red/green logging, viewer-only calendar access, and persistence. `002-calendar-page-layout` is a required refinement for the log page calendar: current-month start, previous/next navigation, desktop dual-month layout, mobile single-month layout, and responsive calendar-only presentation.
 
 ## Technical Context
 
 **Language/Version**: TypeScript with current Next.js App Router conventions
 
-**Primary Dependencies**: Next.js, React, Supabase JavaScript client with server-side auth helpers, Tailwind CSS or equivalent token-driven styling, DM Sans web font
+**Primary Dependencies**: Next.js, React, Firebase modular Web SDK, Tailwind CSS or equivalent token-driven styling, DM Sans web font
 
-**Storage**: Supabase Auth for user accounts; Supabase Postgres for profiles and habit date statuses
+**Storage**: Firebase Authentication for user accounts; Cloud Firestore for profiles and habit date statuses
 
-**Testing**: Type checking, linting, component tests for auth and calendar rendering, end-to-end browser tests for login/signup/calendar/permissions, and Supabase RLS policy tests
+**Testing**: Type checking, linting, component tests for auth and calendar rendering, end-to-end browser tests for login/signup/calendar/permissions, and Firebase Emulator security rules tests
 
 **Target Platform**: Mobile and desktop web browsers
 
@@ -51,7 +51,7 @@ specs/001-habit-calendar-log/
 |-- data-model.md
 |-- quickstart.md
 |-- contracts/
-|   |-- supabase-schema.md
+|   |-- firebase-schema.md
 |   |-- routes.md
 |   `-- ui.md
 `-- tasks.md
@@ -100,16 +100,16 @@ lib/
 |-- calendar/
 |   |-- month-grid.ts
 |   `-- visible-range.ts
-`-- supabase/
+`-- firebase/
     |-- client.ts
-    |-- server.ts
-    `-- middleware.ts
+    |-- auth.ts
+    `-- firestore.ts
 
-supabase/
-|-- migrations/
-|   `-- 001_initial_habit_log.sql
+firebase/
+|-- firestore.rules
+|-- firestore.indexes.json
 `-- tests/
-    `-- habit_status_rls.sql
+    `-- firestore.rules.test.ts
 
 tests/
 |-- component/
@@ -124,7 +124,7 @@ tests/
     `-- owner.test.ts
 ```
 
-**Structure Decision**: Use one root-level Next.js application. Supabase provides hosted authentication and database persistence, so a separate backend project is unnecessary. The `001` plan owns implementation; `002` supplies required calendar UI acceptance details.
+**Structure Decision**: Use one root-level Next.js application. Firebase provides hosted authentication and Firestore persistence, so a separate backend project is unnecessary. The `001` plan owns implementation; `002` supplies required calendar UI acceptance details.
 
 ## Complexity Tracking
 

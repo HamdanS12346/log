@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Parent app plan in `../001-habit-calendar-log/plan.md`.
-- Supabase schema and auth behavior from `../001-habit-calendar-log/contracts/`.
+- Firebase schema, rules, and auth behavior from `../001-habit-calendar-log/contracts/`.
 
 ## Validation Scenarios
 

@@ -4,7 +4,7 @@
 
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md
 
-**Tests**: Included because the implementation plan requires type checks, component tests, end-to-end browser tests, and Supabase RLS policy tests.
+**Tests**: Included because the implementation plan requires type checks, component tests, end-to-end browser tests, and Firebase Emulator security rules tests.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing.
 
@@ -16,15 +16,15 @@
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Initialize the Next.js and Supabase project skeleton.
+**Purpose**: Initialize the Next.js and Firebase project skeleton.
 
 - [X] T001 Initialize the Next.js TypeScript app configuration in package.json
 - [X] T002 [P] Configure TypeScript compiler options in tsconfig.json
 - [X] T003 [P] Configure Next.js runtime settings in next.config.ts
 - [X] T004 [P] Configure linting in eslint.config.mjs
 - [X] T005 [P] Configure Tailwind or token-driven styling entry points in postcss.config.mjs and app/globals.css
-- [X] T006 Create the planned app, components, lib, supabase, and tests directories from specs/001-habit-calendar-log/plan.md
-- [X] T007 [P] Add local environment variable template for Supabase URL and publishable key in .env.example
+- [X] T006 Create the planned app, components, lib, firebase, and tests directories from specs/001-habit-calendar-log/plan.md
+- [X] T007 [P] Add local environment variable template for Firebase web app config in .env.example
 
 ---
 
@@ -36,13 +36,13 @@
 
 - [ ] T008 Define global design tokens for background, foreground, accent, muted, border, success, and failure colors in app/globals.css
 - [ ] T009 Configure DM Sans and root metadata in app/layout.tsx
-- [ ] T010 [P] Implement browser Supabase client setup in lib/supabase/client.ts
-- [ ] T011 [P] Implement server Supabase client setup in lib/supabase/server.ts
-- [ ] T012 Implement session middleware helpers for protected routes in lib/supabase/middleware.ts
+- [ ] T010 [P] Implement Firebase browser app initialization in lib/firebase/client.ts
+- [ ] T011 [P] Implement Firebase Auth helpers in lib/firebase/auth.ts
+- [ ] T012 Implement Firebase session route protection helpers in lib/auth/session.ts
 - [ ] T013 Implement owner role helper for hamdanshaikh11133@gmail.com in lib/auth/owner.ts
 - [ ] T014 Implement session utility functions for non-persistent browser-session behavior in lib/auth/session.ts
-- [ ] T015 Create Supabase schema and RLS migration for profiles and habit_statuses in supabase/migrations/001_initial_habit_log.sql
-- [ ] T016 [P] Create Supabase RLS policy tests for anonymous, viewer, and owner access in supabase/tests/habit_status_rls.sql
+- [ ] T015 Create Firestore collections contract and security rules in firebase/firestore.rules and firebase/firestore.indexes.json
+- [ ] T016 [P] Create Firebase Emulator security rules tests for anonymous, viewer, and owner access in firebase/tests/firestore.rules.test.ts
 - [ ] T017 [P] Implement calendar month grid generation utility in lib/calendar/month-grid.ts
 - [ ] T018 [P] Implement visible month range utility for mobile and desktop in lib/calendar/visible-range.ts
 - [ ] T019 [P] Implement canonical date formatting helpers in lib/calendar/date-format.ts
@@ -93,7 +93,7 @@
 
 - [ ] T036 [P] [US2] Add component tests for viewer-only calendar rendering in tests/component/month-grid.test.tsx
 - [ ] T037 [P] [US2] Add end-to-end viewer read-only calendar test in tests/e2e/permissions.spec.ts
-- [ ] T038 [P] [US2] Add Supabase policy assertions for viewer write rejection in supabase/tests/habit_status_rls.sql
+- [ ] T038 [P] [US2] Add Firebase rules assertions for viewer write rejection in firebase/tests/firestore.rules.test.ts
 
 ### Implementation for User Story 2
 
@@ -183,11 +183,11 @@
 
 **Purpose**: Final verification, performance, accessibility, and documentation cleanup across all stories.
 
-- [ ] T068 [P] Add README setup notes for Next.js and Supabase environment configuration in README.md
+- [ ] T068 [P] Add README setup notes for Next.js and Firebase environment configuration in README.md
 - [ ] T069 Run type checking and linting for the full project using package.json scripts
 - [ ] T070 Run component and unit tests for tests/component and tests/unit
 - [ ] T071 Run end-to-end tests for tests/e2e
-- [ ] T072 Run Supabase policy tests for supabase/tests/habit_status_rls.sql
+- [ ] T072 Run Firebase Emulator security rules tests for firebase/tests/firestore.rules.test.ts
 - [ ] T073 Validate no UI file over 150 lines needs further decomposition in components/auth and components/calendar
 - [ ] T074 Validate all frontend code uses semantic tokens instead of scattered hardcoded colors in app/globals.css, components/auth, and components/calendar
 - [ ] T075 Validate final quickstart scenarios in specs/001-habit-calendar-log/quickstart.md
