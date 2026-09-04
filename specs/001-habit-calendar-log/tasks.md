@@ -34,20 +34,20 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T008 Define global design tokens for background, foreground, accent, muted, border, success, and failure colors in app/globals.css
-- [ ] T009 Configure DM Sans and root metadata in app/layout.tsx
-- [ ] T010 [P] Implement Firebase browser app initialization in lib/firebase/client.ts
-- [ ] T011 [P] Implement Firebase Auth helpers in lib/firebase/auth.ts
-- [ ] T012 Implement Firebase session route protection helpers in lib/auth/session.ts
-- [ ] T013 Implement owner role helper for hamdanshaikh11133@gmail.com in lib/auth/owner.ts
-- [ ] T014 Implement session utility functions for non-persistent browser-session behavior in lib/auth/session.ts
-- [ ] T015 Create Firestore collections contract and security rules in firebase/firestore.rules and firebase/firestore.indexes.json
-- [ ] T016 [P] Create Firebase Emulator security rules tests for anonymous, viewer, and owner access in firebase/tests/firestore.rules.test.ts
-- [ ] T017 [P] Implement calendar month grid generation utility in lib/calendar/month-grid.ts
-- [ ] T018 [P] Implement visible month range utility for mobile and desktop in lib/calendar/visible-range.ts
-- [ ] T019 [P] Implement canonical date formatting helpers in lib/calendar/date-format.ts
-- [ ] T020 Create root redirect route for authenticated and unauthenticated users in app/page.tsx
-- [ ] T021 [P] Create shared target/ring logo component in components/ui/TargetLogo.tsx
+- [X] T008 Define global design tokens for background, foreground, accent, muted, border, success, and failure colors in app/globals.css
+- [X] T009 Configure DM Sans and root metadata in app/layout.tsx
+- [X] T010 [P] Implement Firebase browser app initialization in lib/firebase/client.ts
+- [X] T011 [P] Implement Firebase Auth helpers in lib/firebase/auth.ts
+- [X] T012 Implement Firebase session route protection helpers in lib/auth/session.ts
+- [X] T013 Implement owner role helper for hamdanshaikh11133@gmail.com in lib/auth/owner.ts
+- [X] T014 Implement session utility functions for non-persistent browser-session behavior in lib/auth/session.ts
+- [X] T015 Create Firestore collections contract and security rules in firebase/firestore.rules and firebase/firestore.indexes.json
+- [X] T016 [P] Create Firebase Emulator security rules tests for anonymous, viewer, and owner access in firebase/tests/firestore.rules.test.ts
+- [X] T017 [P] Implement calendar month grid generation utility in lib/calendar/month-grid.ts
+- [X] T018 [P] Implement visible month range utility for mobile and desktop in lib/calendar/visible-range.ts
+- [X] T019 [P] Implement canonical date formatting helpers in lib/calendar/date-format.ts
+- [X] T020 Create root redirect route for authenticated and unauthenticated users in app/page.tsx
+- [X] T021 [P] Create shared target/ring logo component in components/ui/TargetLogo.tsx
 
 **Checkpoint**: Foundation ready; user story implementation can now begin.
 

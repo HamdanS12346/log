@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return signedIn()
+        && request.auth.token.email == "hamdanshaikh11133@gmail.com";
+    }
+
+    function validProfileRole() {
+      return request.resource.data.role in ["owner", "viewer"];
+    }
+
+    function validStatus(dateId) {
+      return request.resource.data.keys().hasOnly(["date", "status", "updatedBy", "updatedAt"])
+        && request.resource.data.date == dateId
+        && dateId.matches("^\\d{4}-\\d{2}-\\d{2}$")
+        && request.resource.data.status in ["red", "green"]
+        && request.resource.data.updatedBy == request.auth.uid;
+    }
+
+    match /profiles/{userId} {
+      allow read: if signedIn() && request.auth.uid == userId;
+      allow create, update: if signedIn()
+        && request.auth.uid == userId
+        && validProfileRole()
+        && (
+          (request.auth.token.email == "hamdanshaikh11133@gmail.com"
+            && request.resource.data.role == "owner")
+          || (request.auth.token.email != "hamdanshaikh11133@gmail.com"
+            && request.resource.data.role == "viewer")
+        );
+      allow delete: if false;
+    }
+
+    match /habitStatuses/{dateId} {
+      allow read: if signedIn();
+      allow create, update: if isOwner() && validStatus(dateId);
+      allow delete: if false;
+    }
+  }
+}
