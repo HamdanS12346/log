@@ -114,8 +114,8 @@
 
 ### Tests for User Story 3
 
-- [ ] T043 [P] [US3] Add component tests for login and signup form states in tests/component/auth-form.test.tsx
-- [ ] T044 [P] [US3] Add end-to-end signup and login flow tests in tests/e2e/auth.spec.ts
+- [X] T043 [P] [US3] Add component tests for login and signup form states in tests/component/auth-form.test.tsx
+- [X] T044 [P] [US3] Add end-to-end signup and login flow tests in tests/e2e/auth.spec.ts
 
 ### Implementation for User Story 3
 
