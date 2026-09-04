@@ -141,8 +141,8 @@
 
 ### Tests for User Story 4
 
-- [ ] T054 [P] [US4] Add desktop and mobile login layout checks in tests/e2e/auth.spec.ts
-- [ ] T055 [P] [US4] Add visual/accessibility component assertions for AuthShell in tests/component/auth-form.test.tsx
+- [X] T054 [P] [US4] Add desktop and mobile login layout checks in tests/e2e/auth.spec.ts
+- [X] T055 [P] [US4] Add visual/accessibility component assertions for AuthShell in tests/component/auth-form.test.tsx
 
 ### Implementation for User Story 4
 

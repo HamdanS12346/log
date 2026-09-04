@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { createElement } from "react";
 import { describe, expect, it, vi } from "vitest";
+import { AuthShell } from "@/components/auth/AuthShell";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { SignUpForm } from "@/components/auth/SignUpForm";
 
@@ -67,5 +68,41 @@ describe("signup form state", () => {
     }));
 
     expect(screen.getByRole("button", { name: "Sign up" })).toBeDisabled();
+  });
+});
+
+describe("auth shell layout and accessibility", () => {
+  it("renders required branding copy and a labeled auth region", () => {
+    render(
+      createElement(AuthShell, {
+        mode: "login",
+        onModeChange: vi.fn(),
+        children: createElement(LoginForm, { onSubmit: vi.fn() })
+      })
+    );
+
+    expect(screen.getByRole("main", { name: "Authentication" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "log home" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "This is just a calender" })).toBeInTheDocument();
+    expect(screen.getByText("nothing else")).toBeInTheDocument();
+    expect(screen.getByText("© 2023 log. All Rights Reserved.")).toBeInTheDocument();
+    expect(screen.getByLabelText("Email")).toBeInTheDocument();
+    expect(screen.getByLabelText("Password")).toBeInTheDocument();
+  });
+
+  it("uses a native button to switch between login and signup modes", () => {
+    const onModeChange = vi.fn();
+
+    render(
+      createElement(AuthShell, {
+        mode: "login",
+        onModeChange,
+        children: createElement(LoginForm, { onSubmit: vi.fn() })
+      })
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Sign up" }));
+
+    expect(onModeChange).toHaveBeenCalledWith("signup");
   });
 });

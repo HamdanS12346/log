@@ -1,5 +1,48 @@
 import { expect, test } from "@playwright/test";
 
+test.describe("login page layout", () => {
+  test("desktop shows branding beside the elevated form card", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/login");
+
+    const container = page.getByLabel("Log authentication");
+    const branding = page.getByLabel("Branding");
+    const card = page.getByLabel("Login");
+
+    await expect(page.getByRole("link", { name: "log home" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "This is just a calender" })).toBeVisible();
+    await expect(page.getByText("nothing else")).toBeVisible();
+    await expect(card.getByLabel("Email")).toBeVisible();
+    await expect(card.getByLabel("Password")).toBeVisible();
+
+    const containerBox = await container.boundingBox();
+    const brandingBox = await branding.boundingBox();
+    const cardBox = await card.boundingBox();
+
+    expect(containerBox?.width).toBeGreaterThan(900);
+    expect(brandingBox?.x).toBeLessThan(cardBox?.x ?? 0);
+    expect(cardBox?.width).toBeGreaterThan(300);
+  });
+
+  test("mobile stacks branding above a full-width form card", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/login");
+
+    const branding = page.getByLabel("Branding");
+    const card = page.getByLabel("Login");
+
+    await expect(page.getByRole("heading", { name: "This is just a calender" })).toBeVisible();
+    await expect(card.getByRole("button", { name: "Login" })).toBeVisible();
+    await expect(page.getByText("Don't have an account?")).toBeVisible();
+
+    const brandingBox = await branding.boundingBox();
+    const cardBox = await card.boundingBox();
+
+    expect(cardBox?.y).toBeGreaterThan(brandingBox?.y ?? 0);
+    expect(cardBox?.width).toBeGreaterThan(340);
+  });
+});
+
 test.describe("signup and login", () => {
   test("new signup reaches the calendar as a viewer", async ({ page }) => {
     const email = `viewer-${Date.now()}@example.com`;

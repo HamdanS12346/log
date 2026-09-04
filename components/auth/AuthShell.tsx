@@ -20,11 +20,11 @@ export function AuthShell({ mode, children, onModeChange }: AuthShellProps) {
             <TargetLogo className="auth-logo-icon" />
             <span>log</span>
           </a>
-          <div className="auth-copy">
+          <section className="auth-copy" aria-label="Intro">
             <h1>This is just a calender</h1>
             <p>nothing else</p>
-          </div>
-          <p className="auth-footer">© 2023 log. All Rights Reserved.</p>
+          </section>
+          <p className="auth-footer">&copy; 2023 log. All Rights Reserved.</p>
         </section>
 
         <section className="auth-card" aria-label={isLogin ? "Login" : "Sign up"}>
