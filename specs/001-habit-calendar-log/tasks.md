@@ -146,10 +146,10 @@
 
 ### Implementation for User Story 4
 
-- [ ] T056 [US4] Apply desktop split layout and right-side elevated form card in components/auth/AuthShell.tsx
-- [ ] T057 [US4] Apply mobile single-column layout and lower rounded form card in components/auth/AuthShell.tsx
-- [ ] T058 [US4] Apply exact visible copy, logo placement, footer copy, and accent link styling in components/auth/AuthShell.tsx
-- [ ] T059 [US4] Verify login page avoids constitution-prohibited visual anti-patterns in app/login/page.tsx and components/auth/AuthShell.tsx
+- [X] T056 [US4] Apply desktop split layout and right-side elevated form card in components/auth/AuthShell.tsx
+- [X] T057 [US4] Apply mobile single-column layout and lower rounded form card in components/auth/AuthShell.tsx
+- [X] T058 [US4] Apply exact visible copy, logo placement, footer copy, and accent link styling in components/auth/AuthShell.tsx
+- [X] T059 [US4] Verify login page avoids constitution-prohibited visual anti-patterns in app/login/page.tsx and components/auth/AuthShell.tsx
 
 **Checkpoint**: All four main user stories are independently functional.
 
